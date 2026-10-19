@@ -58,7 +58,7 @@ per-frame opponent-relative features) and `l2_mask`.
 
 ```bash
 # point --data-dir at a folder of *_l2.json files
-PYTHONPATH=. python boundary_segmentation/train.py --config configs/relis_primary.yaml \
+PYTHONPATH=boundary_segmentation:. python boundary_segmentation/train.py --config configs/relis_primary.yaml \
   --data-dir data/l2/train --out-dir outputs/relis
 ```
 
@@ -78,7 +78,7 @@ smoothed version `b_s`, `transition_zones` (higher-activity intervals) and
 ### 4. Evaluation
 
 ```bash
-PYTHONPATH=. python boundary_segmentation/eval.py --config configs/relis_primary.yaml --ckpt <checkpoint>
+PYTHONPATH=boundary_segmentation:. python boundary_segmentation/eval.py --config configs/relis_primary.yaml --ckpt <checkpoint>
 python paper_experiments/scripts/evaluate_boundaries.py --help
 ```
 
