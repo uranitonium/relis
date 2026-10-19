@@ -1,0 +1,99 @@
+seed: 42
+
+data:
+  data_dir: ../../l2_out_boundary
+  file_glob: "*_l2.json"
+  max_files: 0
+  max_len: 79
+  synthetic: false
+  synthetic_num: 200
+  synthetic_T: 200
+  synthetic_m: 26
+  shuffle: true
+
+model:
+  encoder_type: transformer  # transformer | tcn
+  hidden_dim: 128
+  latent_dim: 64
+  # Keep all L2 inputs enabled (including d_dot and d_dot_scaled).
+  input_zero_indices: []
+  boundary:
+    k: 8
+    init_bias: -1.0
+    skip_alpha: 1.0
+    temperature: 2.0
+    use_critical: true
+    critical_index: 23
+  proj:
+    l2_norm: true
+  transformer:
+    n_layers: 2
+    n_heads: 4
+    ff_dim: 256
+    dropout: 0.1
+    max_len: 2000
+  tcn:
+    layers: 4
+    kernel_size: 3
+    dilation_base: 2
+    dropout: 0.1
+
+loss:
+  lambda_sparse: 0.03
+  lambda_smooth: 0.4
+  lambda_cons: 1.0
+  lambda_contrast: 0.05
+  lambda_z_var: 0.1
+  z_var_target: 0.05
+  lambda_b_prior: 1.0
+  b_mass_target: 0.10
+  lambda_b_var: 2.0
+  b_var_target: 0.02
+  lambda_b_align: 1.0
+  b_align_temp: 3.0
+  use_contrast: true
+  contrast_temp: 0.1
+
+train:
+  batch_size: 16
+  lr: 3.0e-4
+  weight_decay: 0.0
+  grad_clip: 1.0
+  warmup_steps: 1000
+  max_steps: 30000
+  log_every: 100
+  ckpt_every: 1000
+  out_dir: outputs_boundary_legacy
+  early_stop:
+    enabled: true
+    min_steps: 2000
+    patience_steps: 1000
+    min_delta: 1.0e-4
+    ema_alpha: 0.1
+
+postprocess:
+  ema_alpha: 0.5
+  thr_on: 0.10
+  thr_off: 0.06
+  min_len: 3
+  merge_gap: 1
+  min_seg_len: 8
+  mode: robust_hysteresis  # legacy | robust_hysteresis
+  abs_on: 0.12
+  abs_off: 0.08
+  robust_z_on: 1.0
+  robust_z_off: 0.4
+  min_prominence: 0.10
+  min_peak_height: 0.0
+  boundary_frac_min: 0.08
+  boundary_frac_max: 0.30
+  budget_step: 0.15
+  max_budget_iters: 3
+  split_min_zone_len: 6
+  split_min_rel_drop: 0.35
+  split_max_splits: 2
+
+eval:
+  batch_size: 16
+  num_plots: 8
+  plot_dir: eval_plots_boundary_legacy

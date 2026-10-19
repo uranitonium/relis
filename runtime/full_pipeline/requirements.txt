@@ -1,0 +1,14 @@
+# High-level runtime requirements for the boundary-only pipeline.
+# mmdetection and mmpose source trees are vendored in this folder, but their
+# compiled/runtime dependencies must still be installed in the Python env.
+torch
+opencv-python
+numpy
+pyyaml
+tqdm
+norfair
+mmengine
+mmcv
+mmdet
+mmpose
+

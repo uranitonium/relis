@@ -1,0 +1,97 @@
+_config_path: paper_experiments/experiments/truncated_retraining/configs/short_sparse.yaml
+data:
+  data_dir: paper_experiments/experiments/truncated_retraining/data/train
+  file_glob: '*_l2.json'
+  max_files: 0
+  max_len: 0
+  shuffle: true
+  synthetic: false
+  synthetic_T: 200
+  synthetic_m: 26
+  synthetic_num: 200
+eval:
+  batch_size: 16
+  num_plots: 8
+  plot_dir: eval_plots_raw_firstcenter_boundary
+loss:
+  b_align_temp: 3.0
+  b_mass_target: 0.07
+  b_var_target: 0.015
+  contrast_temp: 0.1
+  lambda_b_align: 1.0
+  lambda_b_prior: 1.2
+  lambda_b_var: 1.5
+  lambda_cons: 1.0
+  lambda_contrast: 0.05
+  lambda_smooth: 0.2
+  lambda_sparse: 0.05
+  lambda_z_var: 0.1
+  use_contrast: true
+  z_var_target: 0.05
+model:
+  boundary:
+    critical_index: 23
+    init_bias: -1.0
+    k: 8
+    skip_alpha: 1.0
+    temperature: 2.0
+    use_critical: true
+  encoder_type: transformer
+  hidden_dim: 128
+  input_zero_indices: []
+  latent_dim: 64
+  proj:
+    l2_norm: true
+  tcn:
+    dilation_base: 2
+    dropout: 0.1
+    kernel_size: 3
+    layers: 4
+  transformer:
+    dropout: 0.1
+    ff_dim: 256
+    max_len: 2000
+    n_heads: 4
+    n_layers: 2
+postprocess:
+  ema_alpha: 0.6153488017503075
+  thr_on: 0.3935459911408292
+  thr_off: 0.05737111268665676
+  min_len: 4
+  merge_gap: 1
+  min_seg_len: 1
+  mode: robust_hysteresis
+  abs_on: 0.12
+  abs_off: 0.012306592626366023
+  robust_z_on: 1.0988118429230924
+  robust_z_off: 0.38775898141270293
+  min_prominence: 0.0
+  min_peak_height: 0.0
+  boundary_frac_min: 0.025
+  boundary_frac_max: 1.0
+  budget_step: 0.15
+  max_budget_iters: 2
+  onset_backtrack: 2
+  split_min_zone_len: 3
+  split_min_rel_drop: 0.34484368019294365
+  split_max_splits: 1
+  micro_merge_zone_len: 0
+  micro_merge_gap: 0
+  micro_merge_max_span: 0
+seed: 20270618
+train:
+  batch_size: 16
+  ckpt_every: 1000
+  early_stop:
+    ema_alpha: 0.1
+    enabled: true
+    min_delta: 0.0001
+    min_steps: 1800
+    patience_steps: 900
+  grad_clip: 1.0
+  log_every: 100
+  lr: 0.0003
+  max_steps: 1000
+  out_dir: paper_experiments/experiments/truncated_retraining/runs/short_sparse_seed18_smooth02
+  warmup_steps: 600
+  weight_decay: 0.0
