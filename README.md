@@ -94,7 +94,7 @@ baselines).
 | `relis_primary_seed20270618_release.pt` | Primary paper model (seed 20270618, 1,000 updates) | 2.2 MB |
 | `relis_smooth02_seed2027061{4,5,6,7}_release.pt` | Matched seeds used for five-seed results | 2.2 MB each |
 
-Checkpoints are distributed as GitHub release assets (coming soon). Release
+Checkpoints are distributed as assets of the [v1.0 release](https://github.com/uranitonium/relis/releases/tag/v1.0); download them into `checkpoints/`. Release
 files contain model weights and the training configuration only (optimizer
 state removed). The primary model corresponds to the archived training
 checkpoint with SHA-256
