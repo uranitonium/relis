@@ -24,6 +24,7 @@ selects the checkpoint and extraction rules.
 | `runtime/full_pipeline/` | Pose-to-partition front end: detection, pose, fencer tracking, L1 movement and L2 pairwise relational features, ReLIS inference |
 | `paper_experiments/scripts/` | Scripts for the paper's experiments: baselines (RGB, R3D, VideoMAE, Video Swin, ST-GCN, kernel change point, TS-CP2-style), ablations, extractor searches, bootstrap analyses, downstream state models, table/figure export |
 | `paper_experiments/tests/` | Unit tests |
+| `data/` | Evaluation annotations and source-video references (no video) |
 
 The pose front end (`runtime/full_pipeline/`) expects local installations of
 MMDetection/MMPose and the RTMDet-tiny / RTMPose-m weights in
@@ -102,10 +103,11 @@ checkpoint with SHA-256
 
 ## Data
 
-Raw broadcast video, pose outputs derived from it, and the human annotations
-of third-party footage are not included in this repository. Exact numeric
-results for the paper's tables are provided in the paper's supplementary
-archive.
+`data/` contains the human annotations (adjudicated consensus and both
+annotators' independent labels) and source references (YouTube IDs and clip
+timestamps) for all 234 evaluated foil exchanges (223 usable). See
+[`data/README.md`](data/README.md). Raw broadcast video and derived pose data
+are not redistributed; obtain the source videos from YouTube under its terms.
 
 ## Citation
 
