@@ -19,7 +19,7 @@ selects the checkpoint and extraction rules.
 | --- | --- |
 | `boundary_segmentation/` | ReLIS model (Transformer/TCN/BiLSTM encoders, boundary head), losses, dataset, training (`train.py`), evaluation (`eval.py`) and single-sequence inference (`infer.py`) |
 | `boundary_segmentation/postprocess/` | Activity-evidence extraction (EMA smoothing, robust hysteresis, coverage clamp, gap merging, onset backtracking, valley splitting) |
-| `configs/relis_primary.yaml` | Exact configuration of the primary paper model and its development-selected extractor |
+| `configs/relis_primary.yaml` | Exact configuration of the primary paper model and its development-selected (conservative) extractor used for all reported main results |
 | `deployment/checkpoints/legacy_auto/config.yaml` | Base configuration used by several experiment scripts |
 | `runtime/full_pipeline/` | Pose-to-partition front end: detection, pose, fencer tracking, L1 movement and L2 pairwise relational features, ReLIS inference |
 | `paper_experiments/scripts/` | Scripts for the paper's experiments: baselines (RGB, R3D, VideoMAE, Video Swin, ST-GCN, kernel change point, TS-CP2-style), ablations, extractor searches, bootstrap analyses, downstream state models, table/figure export |

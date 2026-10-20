@@ -1,4 +1,3 @@
-_config_path: paper_experiments/experiments/truncated_retraining/configs/short_sparse.yaml
 data:
   data_dir: paper_experiments/experiments/truncated_retraining/data/train
   file_glob: '*_l2.json'
@@ -54,26 +53,26 @@ model:
     n_heads: 4
     n_layers: 2
 postprocess:
-  ema_alpha: 0.6153488017503075
-  thr_on: 0.3935459911408292
-  thr_off: 0.05737111268665676
-  min_len: 4
+  ema_alpha: 0.4893901784872813
+  thr_on: 0.39146448072059703
+  thr_off: 0.1633949209777632
+  min_len: 1
   merge_gap: 1
   min_seg_len: 1
   mode: robust_hysteresis
   abs_on: 0.12
-  abs_off: 0.012306592626366023
-  robust_z_on: 1.0988118429230924
-  robust_z_off: 0.38775898141270293
+  abs_off: 0.03276625111912385
+  robust_z_on: 1.199120293994912
+  robust_z_off: -0.009499373399342204
   min_prominence: 0.0
   min_peak_height: 0.0
-  boundary_frac_min: 0.025
-  boundary_frac_max: 1.0
-  budget_step: 0.15
-  max_budget_iters: 2
-  onset_backtrack: 2
+  boundary_frac_min: 0.0
+  boundary_frac_max: 0.35
+  budget_step: 0.12
+  max_budget_iters: 5
+  onset_backtrack: 4
   split_min_zone_len: 3
-  split_min_rel_drop: 0.34484368019294365
+  split_min_rel_drop: 0.2711892209681376
   split_max_splits: 1
   micro_merge_zone_len: 0
   micro_merge_gap: 0
